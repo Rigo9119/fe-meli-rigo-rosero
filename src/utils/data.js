@@ -11,4 +11,14 @@ async function getItems(query) {
     }
 }
 
-export default getItems
+async function getItem(itemId) {
+    try {
+        const res = await axios.get(`${baseUrl}/${itemId}`)
+        
+        return res.data
+    } catch (error) {
+        console.log('netwrok error 🌍🔥:>> ', error);
+    }
+}
+
+export { getItems, getItem };

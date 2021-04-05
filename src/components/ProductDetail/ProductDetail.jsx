@@ -9,7 +9,6 @@ const ProductDetail = ({
     productPrice,
     productTitle,
     productDescription,
-    productStatus,
     quantitySold,
 }) => {
     return (
@@ -24,7 +23,7 @@ const ProductDetail = ({
                 </div>
                 <div className="detail__top__data">
                     <h3 className="detail__top__data__status">
-                        {productStatus} - {quantitySold}
+                        vendidos: {quantitySold}
                     </h3>
                     <h3 className="detail__top__data__title">
                         {productTitle}
@@ -56,11 +55,10 @@ const ProductDetail = ({
 ProductDetail.propTypes = {
     productImg: PropTypes.string,
     productAlt: PropTypes.string,
-    productPrice: PropTypes.string,
+    productPrice: PropTypes.number,
     productTitle: PropTypes.string,
     productDescription: PropTypes.string,
-    productStatus: PropTypes.string,
-    quantitySold: PropTypes.string,
+    quantitySold: PropTypes.number,
 };
 
 export default ProductDetail;

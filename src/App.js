@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
-import getItems from './utils/data';
+import {getItems, getItem} from './utils/data';
 // Components
 import Header from './components/Header/Header';
 import ProductList from './components/ProductList/ProductList';
@@ -13,7 +13,9 @@ import './App.css';
 
 function App() {
   const [inputValue, setinputValue] = useState('');
+  const [id, setId] = useState('');
   const [products, setProducts] = useState([]);
+  const [item, setItem] = useState([]);
 
   useEffect(() => {
     function fetchItems() {      
@@ -27,6 +29,20 @@ function App() {
       fetchItems()
   }, [inputValue]);
 
+  useEffect(() => {
+    function fetchItem() {      
+      getItem(id)
+        .then(data => setItem(data))
+        .catch(error => console.log(`error client ::=> ${error}`))
+    }
+      fetchItem()
+  }, [id]);
+
+  console.log('inputValue :>> ', inputValue);
+
+  const productsList = products[0];
+  const product = item[0]?.item;
+
   const onHandleSubmit = (event) => {
     event.preventDefault();
     window.location = `/items?search=${inputValue}`;
@@ -37,10 +53,8 @@ function App() {
   }
 
   const onClickHandler = (itemClicked) => {
-    console.log(itemClicked)
+    setId(itemClicked);
   }
-
-  const productsList = products[0];
 
   return (
     <div>
@@ -71,7 +85,17 @@ function App() {
               inputValue={inputValue}
               inputChange={inputHandler}
             /> 
-            <ProductDetail />
+            <div className="details">
+              <ProductDetail 
+                productImg={product?.picture}
+                productAlt={product?.title}
+                productPrice={product?.price.amount}
+                productTitle={product?.title}
+                productStatus={product?.sold_quantity}
+                productDescription={product?.description}
+                quantitySold={product?.sold_quantity}
+              />
+            </div>
           </Route>
         </div>
       </Router>
