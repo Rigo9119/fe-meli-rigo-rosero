@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
-  //Switch,
   Route,
-  //Link
 } from "react-router-dom";
 import getItems from './utils/data';
 // Components
@@ -17,7 +15,6 @@ function App() {
   const [inputValue, setinputValue] = useState('');
   const [products, setProducts] = useState([]);
 
-  
   useEffect(() => {
     function fetchItems() {      
       getItems(inputValue)
@@ -37,6 +34,10 @@ function App() {
 
   const inputHandler = (event) => {
     setinputValue(event.target.value);
+  }
+
+  const onClickHandler = (itemClicked) => {
+    console.log(itemClicked)
   }
 
   const productsList = products[0];
@@ -61,6 +62,7 @@ function App() {
             /> 
             <ProductList 
               productsList={productsList} 
+              onClick={onClickHandler}
             />
           </Route>
           <Route path={`/items/:id`}>

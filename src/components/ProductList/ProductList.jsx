@@ -5,7 +5,7 @@ import ProductCard from '../ProductCard/ProductCard';
 // Styles
 import './styles.css';
 
-const ProductList = ({productsList}) => {
+const ProductList = ({productsList, onClick}) => {
     
     return (
         <div className="list">
@@ -18,6 +18,7 @@ const ProductList = ({productsList}) => {
                     productLocation={item.address.state_name}
                     productPrice={item.price}
                     productTitle={item.title}
+                    onClick={onClick}
                 />
             )}
         </div>
@@ -27,7 +28,7 @@ const ProductList = ({productsList}) => {
 
 ProductList.propTypes = {
     productsList: PropTypes.array,
-    onClickHandler: PropTypes.func
+    onClick: PropTypes.func
 };
 
 

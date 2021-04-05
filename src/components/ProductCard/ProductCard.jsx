@@ -11,12 +11,14 @@ const ProductCard = ({
     productPrice, 
     productTitle, 
     productLocation,
+    onClick
 }) => {
     
     return (
         <Link
             className="card"
             to={`/items/${productHref}`}
+            onClick={() => onClick(productHref)}
         >
             <div className="card__left">
                 <div className="card__left__img-wrap">  
@@ -53,6 +55,7 @@ ProductCard.propTypes = {
     productTitle: PropTypes.string,
     productLocation: PropTypes.string,
     onClickHandler: PropTypes.func,
+    onClick: PropTypes.func,
 };
 
 
