@@ -5,7 +5,7 @@ import SearchBar from '../SearchBar/SearchBar';
 // Styles
 import './styles.css'
 
-const Header = ({inputValue, inputChange}) => {
+const Header = ({inputValue, inputChange, formSubmit}) => {
     return (
         <header className="header">
             <div className="header__logo">
@@ -17,8 +17,9 @@ const Header = ({inputValue, inputChange}) => {
             </div>
             <SearchBar 
                 value={inputValue}
-                onChange={inputChange}
                 placeholder="Nunca dejes de buscar"
+                onChange={inputChange}
+                onSubmit={formSubmit}
             />
         </header>
     );

@@ -5,9 +5,12 @@ import PropTypes from 'prop-types';
 import './styles.css'
 
 
-const SearchBar = ({ placeholder, value, onChange, onClick, src}) => {
+const SearchBar = ({ placeholder, value, onChange, onClick, onSubmit}) => {
     return (
-        <div className="search-bar">
+        <form 
+            onSubmit={onSubmit}
+            className="search-bar"
+        >
             <input 
                 className="search-bar__input"
                 type="text"
@@ -24,7 +27,7 @@ const SearchBar = ({ placeholder, value, onChange, onClick, src}) => {
                     alt="Icono buscar" 
                 />
             </button>
-        </div>
+        </form>
     );
 };
 
@@ -34,7 +37,7 @@ SearchBar.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
-    src: PropTypes.string,
+    onSubmit: PropTypes.func,
 };
 
 

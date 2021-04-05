@@ -9,17 +9,15 @@ import getItems from './utils/data';
 // Components
 import Header from './components/Header/Header';
 import ProductList from './components/ProductList/ProductList';
+import ProductDetail from './components/ProductDetail/ProductDetail';
 //Styles
 import './App.css';
 
 function App() {
   const [inputValue, setinputValue] = useState('');
   const [products, setProducts] = useState([]);
-  
-  const inputHandler = (event) => {
-    setinputValue(event.target.value);
-  }
 
+  
   useEffect(() => {
     function fetchItems() {      
       getItems(inputValue)
@@ -31,19 +29,48 @@ function App() {
     }
       fetchItems()
   }, [inputValue]);
-  
+
+  const onHandleSubmit = (event) => {
+    event.preventDefault();
+    window.location = `/items?search=${inputValue}`;
+  }
+
+  const inputHandler = (event) => {
+    setinputValue(event.target.value);
+  }
+
   const productsList = products[0];
 
   return (
-    <div>  
+    <div>
       <Router>
         <div>
-          <Route path="/" component={Header}/>
-          <Route 
-            path={`/items?search=${inputValue}`} 
-          />
-          <Route path={`/items/id`} />
-          <ProductList productsList={productsList} />
+          <Route exact path="/">
+            <Header 
+              formSubmit={onHandleSubmit}
+              inputValue={inputValue}
+              inputChange={inputHandler}
+            /> 
+          </Route>
+
+          <Route exact path={`/items`}>
+            <Header 
+              formSubmit={onHandleSubmit}
+              inputValue={inputValue}
+              inputChange={inputHandler}
+            /> 
+            <ProductList 
+              productsList={productsList} 
+            />
+          </Route>
+          <Route path={`/items/:id`}>
+            <Header 
+              formSubmit={onHandleSubmit}
+              inputValue={inputValue}
+              inputChange={inputHandler}
+            /> 
+            <ProductDetail />
+          </Route>
         </div>
       </Router>
     </div>

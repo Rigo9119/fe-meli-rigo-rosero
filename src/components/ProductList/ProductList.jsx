@@ -6,11 +6,13 @@ import ProductCard from '../ProductCard/ProductCard';
 import './styles.css';
 
 const ProductList = ({productsList}) => {
+    
     return (
         <div className="list">
-            {productsList && productsList.map(item => 
+            {productsList?.map(item => 
                 <ProductCard 
                     key={item.id}
+                    productHref={item.id}
                     productImg={item.thumbnail}
                     productAlt={item.title}
                     productLocation={item.address.state_name}
@@ -25,6 +27,7 @@ const ProductList = ({productsList}) => {
 
 ProductList.propTypes = {
     productsList: PropTypes.array,
+    onClickHandler: PropTypes.func
 };
 
 

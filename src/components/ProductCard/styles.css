@@ -2,9 +2,11 @@
     align-items: center;
     background-color: var(--white);
     border-bottom: 1px solid var(--lighter-gray);
+    cursor: pointer;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
+    text-decoration: none;
     width: 75%;
 }
 

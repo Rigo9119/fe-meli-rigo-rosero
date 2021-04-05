@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom"
 // Styles 
 import './styles.css'
 
@@ -9,18 +10,13 @@ const ProductCard = ({
     productAlt, 
     productPrice, 
     productTitle, 
-    productLocation
+    productLocation,
 }) => {
-    const onHandleClick = (event) => {
-        event.preventDefault();
-        window.history.length({}, '', productHref);
-    }
-
+    
     return (
-        <a 
+        <Link
             className="card"
-            href={productHref}
-            onClick={onHandleClick}
+            to={`/items/${productHref}`}
         >
             <div className="card__left">
                 <div className="card__left__img-wrap">  
@@ -44,7 +40,7 @@ const ProductCard = ({
                     {productLocation}
                 </h5>
             </div>
-        </a>
+        </Link>
     );
 };
 
@@ -56,6 +52,7 @@ ProductCard.propTypes = {
     productPrice: PropTypes.number,
     productTitle: PropTypes.string,
     productLocation: PropTypes.string,
+    onClickHandler: PropTypes.func,
 };
 
 
