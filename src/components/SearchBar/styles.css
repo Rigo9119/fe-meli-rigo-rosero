@@ -1,0 +1,24 @@
+.search-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    width: 93%;
+}
+
+.search-bar__input {
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+}
+
+.search-bar__btn {
+    align-items: center;
+    border: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    width: 5%;
+}
+
+
