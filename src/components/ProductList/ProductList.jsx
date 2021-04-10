@@ -9,7 +9,7 @@ const ProductList = ({productsList, onClick}) => {
     
     return (
         <div className="list">
-            {productsList?.map(item => 
+            {productsList.map(item => 
                 <ProductCard 
                     key={item.id}
                     productHref={item.id}

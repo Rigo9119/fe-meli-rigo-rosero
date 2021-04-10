@@ -15,13 +15,13 @@ function App() {
   const [inputValue, setinputValue] = useState('');
   const [id, setId] = useState('');
   const [products, setProducts] = useState([]);
-  const [item, setItem] = useState([]);
+  const [product, setProduct] = useState({});
   
   useEffect(() => {
     function fetchItems() {      
       getItems(inputValue)
         .then(data => {
-          const itemsArr = data.map(item => item.items.slice(0, 4));
+          const itemsArr = [...data.items.slice(0, 4)];
           setProducts(itemsArr);
         })
         .catch(error => console.log(`error client list::=> ${error}`))
@@ -29,21 +29,12 @@ function App() {
       fetchItems()
   }, [inputValue]);
 
-  useEffect(() => {
-    function fetchItem() {      
+  useEffect(() => {      
       getItem(id)
-        .then(data => {
-          setItem(data)
-        })
+        .then(data => setProduct(data.item))
         .catch(error => console.log(`error client item::=> ${error}`))
-    }
-      fetchItem()
   }, [id]);
-
-  const productsList = products[0];
-  // this line has a problem wont let me do a map 
-  const product = item[0]?.item;
-
+  
   const onHandleSubmit = (event) => {
     event.preventDefault();
     window.location = `/items?search=${inputValue}`;
@@ -76,7 +67,7 @@ function App() {
               inputChange={inputHandler}
             /> 
             <ProductList 
-              productsList={productsList} 
+              productsList={products} 
               onClick={onClickHandler}
             />
           </Route>
@@ -87,16 +78,15 @@ function App() {
               inputChange={inputHandler}
             /> 
             <div className="details">
-                <ProductDetail 
-                  productImg={product?.picture}
-                  productAlt={product?.title}
-                  productPrice={product?.price.amount}
-                  productTitle={product?.title}
-                  productStatus={product?.sold_quantity}
-                  productDescription={product?.description}
-                  quantitySold={product?.sold_quantity}
-              />
-
+                  <ProductDetail 
+                    productImg={product?.picture}
+                    productAlt={product?.title}
+                    productPrice={product?.price?.amount}
+                    productTitle={product?.title}
+                    productStatus={product?.sold_quantity}
+                    productDescription={product?.description}
+                    quantitySold={product?.sold_quantity}
+                  />   
             </div>
           </Route>
         </div>
