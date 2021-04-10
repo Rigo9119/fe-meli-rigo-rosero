@@ -7,14 +7,26 @@ This is the test for the front end developer position at Mercado Libre, the proj
 For this part of the preject I used :
 ``` React ```
 ``` axios ```
-``` React router ````
+``` React router ```
 
 ## To run the project
 
 In order to tun the project you would need to download both the server which will run on ```localhost:5050``` and the client which will be running on ```localhost:3000``` as usual. 
 
-After downolad you can run the commands:
-```yarn install```
+links:
+[client side](https://github.com/Rigo9119/fe-meli-rigo-rosero)
+[server side](https://github.com/Rigo9119/fe-meli-rigo-rosero-server).
+
+### clone from master
+
+>[client side](https://github.com/Rigo9119/fe-meli-rigo-rosero)
+
+After download and clone the repo you can run the commands:
+
+> ```yarn install``` to install dependencies 
+> ```yarn start ``` to run the project
+
+As mention above the client will be running on ```localhost:3000```
 
 ## Issues
 
@@ -22,10 +34,15 @@ This test has 2 major problems(bugs), for some reason the api will always respon
 
 I dont really have enough experience with react router so im sure there are  some mistakes on the implementation. 
 
+### Fixes
+
+April 10 - 2021: fix search results, improvements were made on the server side and the client so when reaching the api it will get search related 
+items.
+
 ## Improvements 
 
 Of course i would like to implement the breadcrumb component, i havent do it until now so it would be really nice to learn something new, 
-I would like to suggest maybe a responsive design for it.
+I would like to suggest maybe a responsive design for it and typescript to prevent types issues.
 
 
 
