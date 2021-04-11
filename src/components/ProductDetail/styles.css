@@ -8,7 +8,7 @@
 }
 
 .detail__top {
-    align-items: flex-start;
+    align-items: flex-;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -16,16 +16,17 @@
 }
 
 .detail__top__img-wrap {
+    margin: 10px;
     width: 680px;
 }
 
 .detail__top__img-wrap__img {
-    width: 100%;
+    width: 680px;
 }
 
 .detail__top__data {
     padding-top: 36px; 
-    width: 45%;
+    width: 30%;
 }
 
 .detail__top__data__status {
@@ -35,7 +36,7 @@
 
 .detail__top__data__title {
     font-size: 24px;
-    width: 40%;
+    width: 80%;
 }
 
 .detail__top__data__price {

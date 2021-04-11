@@ -6,7 +6,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import './styles.css';
 
 const ProductList = ({productsList, onClick}) => {
-    
+
     return (
         <div className="list">
             {productsList.map(item => 
@@ -18,6 +18,7 @@ const ProductList = ({productsList, onClick}) => {
                     productLocation={item.address.state_name}
                     productPrice={item.price}
                     productTitle={item.title}
+                    freeShipping={item.shipping.free_shipping}
                     onClick={onClick}
                 />
             )}

@@ -11,8 +11,15 @@ const ProductCard = ({
     productPrice, 
     productTitle, 
     productLocation,
+    freeShipping, 
     onClick
 }) => {
+
+    const FreeShipping = () => (
+        <img src='./ic_shipping.png' alt='icono envio gratis'/>
+    );
+
+    const iconVal = freeShipping ? <FreeShipping /> : null
     
     return (
         <Link
@@ -30,7 +37,7 @@ const ProductCard = ({
                 </div>
                 <div className="card__left__text">
                     <h3 className="card__left__text__price">
-                        $ {productPrice}
+                        $ {productPrice} {iconVal}
                     </h3>
                     <p className="card__left__text__title">
                         {productTitle}
@@ -54,7 +61,7 @@ ProductCard.propTypes = {
     productPrice: PropTypes.number,
     productTitle: PropTypes.string,
     productLocation: PropTypes.string,
-    onClickHandler: PropTypes.func,
+    freeShipping: PropTypes.bool,
     onClick: PropTypes.func,
 };
 

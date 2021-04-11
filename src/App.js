@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from "react-router-dom";
-import {getItems, getItem} from './utils/data';
+import { getItems, getItem } from './utils/data';
 // Components
 import Header from './components/Header/Header';
 import ProductList from './components/ProductList/ProductList';
@@ -21,7 +21,7 @@ function App() {
     function fetchItems() {      
       getItems(inputValue)
         .then(data => {
-          const itemsArr = [...data.items.slice(0, 4)];
+          const itemsArr = [...data?.items.slice(0, 4)];
           setProducts(itemsArr);
         })
         .catch(error => console.log(`error client list::=> ${error}`))
@@ -71,6 +71,7 @@ function App() {
               onClick={onClickHandler}
             />
           </Route>
+
           <Route path={`/items/:id`}>
             <Header 
               formSubmit={onHandleSubmit}
@@ -85,6 +86,7 @@ function App() {
                     productTitle={product?.title}
                     productStatus={product?.sold_quantity}
                     productDescription={product?.description}
+                    productCondition={product?.condition}
                     quantitySold={product?.sold_quantity}
                   />   
             </div>

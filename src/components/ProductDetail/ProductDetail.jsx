@@ -8,9 +8,12 @@ const ProductDetail = ({
     productAlt,
     productPrice,
     productTitle,
+    productCondition,
     productDescription,
     quantitySold,
 }) => {
+    const conditionVal = productCondition === 'new' ? 'Nuevo' : 'Usado';
+
     return (
         <div className="detail">
             <div className="detail__top">
@@ -23,7 +26,7 @@ const ProductDetail = ({
                 </div>
                 <div className="detail__top__data">
                     <h3 className="detail__top__data__status">
-                        vendidos: {quantitySold}
+                        {conditionVal} - {quantitySold} vendidos
                     </h3>
                     <h3 className="detail__top__data__title">
                         {productTitle}
@@ -58,6 +61,7 @@ ProductDetail.propTypes = {
     productPrice: PropTypes.number,
     productTitle: PropTypes.string,
     productDescription: PropTypes.string,
+    productCondition: PropTypes.string,
     quantitySold: PropTypes.number,
 };
 
